@@ -3,6 +3,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.TimerTask;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
@@ -17,7 +19,8 @@ public class TestConnection extends TimerTask {
 // -------------------------------------------------------------------------------------------------------------------------
         try {
             // This block configure the logger with handler and formatter
-            fh = new FileHandler("/Users/lscharlemann/Documents/logs/MyLogFile.log", true);
+            LocalDate localDate = LocalDate.now();
+            fh = new FileHandler("/Users/lscharlemann/Documents/logs/ConnectionLog_"+localDate+".log", true);
             logger.addHandler(fh);
             SimpleFormatter formatter = new SimpleFormatter();
             fh.setFormatter(formatter);
