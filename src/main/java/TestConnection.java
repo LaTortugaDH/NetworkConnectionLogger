@@ -1,3 +1,4 @@
+import org.joda.time.DateTime;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -8,6 +9,7 @@ import java.util.TimerTask;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+
 public class TestConnection extends TimerTask {
     @Override
     public void run() {
@@ -17,14 +19,16 @@ public class TestConnection extends TimerTask {
         HttpURLConnection connection = null;
 // -------------------------------------------------------------------------------------------------------------------------
         try {
-            // This block configure the logger with handler and formatter
+            DateTime dt = new DateTime();
+            int hours = dt.getHourOfDay();
             LocalDate localDate = LocalDate.now();
+            // This block configure the logger with handler and formatter
             fh = new FileHandler("/Users/lscharlemann/Documents/logs/ConnectionLog_"+localDate+".log", true);
             logger.addHandler(fh);
             SimpleFormatter formatter = new SimpleFormatter();
             fh.setFormatter(formatter);
-            URL u;
 // -------------------------------------------------------------------------------------------------------------------------
+            URL u;
             switch(((int)System.currentTimeMillis()%10000-(int)System.currentTimeMillis()%1000)/1000) {
                 case 0:
                     u = new URL("http://www.youtube.com");
@@ -61,13 +65,13 @@ public class TestConnection extends TimerTask {
                 final URLConnection conn = u.openConnection();
                 conn.connect();
                 conn.getInputStream().close();
-                logger.info("\t succesfully connected to: "+u);
+                logger.info("\n\t succesfully connected to: "+u+"\n");
 
             } catch (MalformedURLException e) {
                 throw new RuntimeException(e);
             } catch (Exception e) {
                 logger.warning("###################################################################"
-                                + "\n \t ERROR occured while trying to connect to "+u
+                                + "\n \t ERROR occured while trying to connect to "+u+ " at "+hours+" o'clock"
                                 + "\n############################################################################");
             }
         } catch (SecurityException e) {

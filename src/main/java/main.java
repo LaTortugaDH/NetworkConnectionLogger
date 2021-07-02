@@ -9,7 +9,7 @@ public class main {
         Timer t2 = new Timer();
         DataEvaluator dataEvaluator = new DataEvaluator();
         // This task is scheduled to run once every hour
-        t2.scheduleAtFixedRate(testConnection,0,3600000);
+        t2.scheduleAtFixedRate(dataEvaluator,0,3600000);
     }
 
 }
