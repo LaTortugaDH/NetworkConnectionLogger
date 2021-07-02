@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.TimerTask;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
