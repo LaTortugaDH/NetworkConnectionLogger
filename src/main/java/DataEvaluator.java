@@ -12,8 +12,8 @@ public class DataEvaluator extends TimerTask {
     @Override
     public void run() {
         FileHandler fh=null;
+        LocalDate localDate = LocalDate.now();
         try{
-            LocalDate localDate = LocalDate.now();
             DateTime dt = new DateTime();
             int hours = dt.getHourOfDay();
             FileInputStream fstream = new FileInputStream("/Users/lscharlemann/Documents/logs/ConnectionLog_"+localDate+".log");

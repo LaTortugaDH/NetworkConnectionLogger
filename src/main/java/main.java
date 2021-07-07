@@ -1,3 +1,7 @@
+import java.io.File;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Timer;
 
 public class main {
@@ -10,6 +14,10 @@ public class main {
         DataEvaluator dataEvaluator = new DataEvaluator();
         // This task is scheduled to run once every hour
         t2.scheduleAtFixedRate(dataEvaluator,0,3600000);
+        Timer t3 = new Timer();
+        CleanUp cleanUp = new CleanUp();
+        // This task is scheduled to run once every day
+        t3.scheduleAtFixedRate(cleanUp,0,86400000);
+        System.out.println(args);
     }
-
 }
